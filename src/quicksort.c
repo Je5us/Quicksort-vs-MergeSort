@@ -14,9 +14,17 @@ static int partition(int arr[], int left, int right){
    * 2. Mantenga a la izquierda los elementos <= pivote.
    * 3. Devuelva la posición final del pivote.
    */
-  (void)arr;
-  (void)left;
-  return right;
+	int pivot = right; 
+	int i = right - 1;
+	int j = right;
+	
+	while(i >= left){
+		if(arr[i] > pivot)
+			swapInt(&arr[i], &arr[j]);
+		i--;
+	}
+	swapInt(&arr[right], &arr[j]);
+  return j;
 }
 
 static void quickSortRange(int arr[], int left, int right){
@@ -33,3 +41,4 @@ void quickSort(int arr[], int n){
     return;
   quickSortRange(arr, 0, n - 1);
 }
+
